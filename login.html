@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | LexMatch AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            background: #0f172a;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .register-btn {
+            border: 1px solid #38bdf8;
+            padding: 8px 17px;
+            border-radius: 6px;
+        }
+
+        .register-btn:hover {
+            background: #38bdf8;
+            color: #0f172a !important;
+        }
+
+        /* ================= LOGIN AREA ================= */
+
+        .login-section {
+            min-height: calc(100vh - 75px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 60px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(15, 23, 42, 0.94),
+                    rgba(15, 23, 42, 0.94)
+                ),
+                url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* ================= LOGIN CARD ================= */
+
+        .login-card {
+            width: 100%;
+            max-width: 450px;
+
+            background: white;
+            padding: 40px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-logo .icon {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #e0f2fe;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+        }
+
+        .login-logo h1 {
+            color: #0f172a;
+            font-size: 30px;
+            margin-bottom: 7px;
+        }
+
+        .login-logo h1 span {
+            color: #0284c7;
+        }
+
+        .login-logo p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+
+            color: #334155;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box input {
+            width: 100%;
+
+            padding: 13px 45px 13px 15px;
+
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+
+            outline: none;
+
+            font-size: 15px;
+
+            color: #1e293b;
+
+            transition: 0.3s;
+        }
+
+        .input-box input:focus {
+            border-color: #0284c7;
+
+            box-shadow:
+                0 0 0 3px rgba(14, 165, 233, 0.12);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #64748b;
+        }
+
+        .password-toggle {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* ================= OPTIONS ================= */
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin: 5px 0 25px;
+
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #64748b;
+        }
+
+        .remember input {
+            accent-color: #0284c7;
+        }
+
+        .forgot {
+            color: #0284c7;
+            text-decoration: none;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+        /* ================= LOGIN BUTTON ================= */
+
+        .login-button {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #0284c7;
+            color: white;
+
+            font-size: 16px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .login-button:hover {
+            background: #0369a1;
+            transform: translateY(-1px);
+        }
+
+        /* ================= DIVIDER ================= */
+
+        .divider {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 25px 0;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            height: 1px;
+            background: #e2e8f0;
+            flex: 1;
+        }
+
+        /* ================= REGISTER ================= */
+
+        .register-text {
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+        .register-text a {
+            color: #0284c7;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ================= ERROR MESSAGE ================= */
+
+        .error-message {
+            display: none;
+
+            background: #fef2f2;
+            color: #dc2626;
+
+            border: 1px solid #fecaca;
+
+            padding: 10px 12px;
+
+            border-radius: 7px;
+
+            margin-bottom: 18px;
+
+            font-size: 13px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #020617;
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+        footer span {
+            color: #38bdf8;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .login-section {
+                min-height: calc(100vh - 120px);
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .login-card {
+                padding: 30px 22px;
+            }
+
+            .login-logo h1 {
+                font-size: 26px;
+            }
+
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <header>
+
+        <div class="logo">
+            Lex<span>Match AI</span>
+        </div>
+
+        <nav>
+            <ul>
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="legal_topics.html">Legal Topics</a>
+                </li>
+
+                <li>
+                    <a href="chatbot.html">AI Chatbot</a>
+                </li>
+
+                <li>
+                    <a href="faq.html">FAQ</a>
+                </li>
+
+                <li>
+                    <a href="register.html" class="register-btn">
+                        Register
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= LOGIN SECTION ================= -->
+
+    <main class="login-section">
+
+        <div class="login-card">
+
+            <!-- Login Header -->
+
+            <div class="login-logo">
+
+                <div class="icon">
+                    ⚖️
+                </div>
+
+                <h1>
+                    Welcome to <span>LexMatch AI</span>
+                </h1>
+
+                <p>
+                    Sign in to continue to your account
+                </p>
+
+            </div>
+
+
+            <!-- Error Message -->
+
+            <div class="error-message" id="errorMessage">
+                Please enter a valid email address and password.
+            </div>
+
+
+            <!-- Login Form -->
+
+            <form id="loginForm">
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-box">
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <span class="input-icon">
+                            ✉️
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <span
+                            class="input-icon password-toggle"
+                            id="togglePassword"
+                            title="Show password"
+                        >
+                            👁️
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Options -->
+
+                <div class="form-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember"
+                            name="remember"
+                        >
+
+                        Remember me
+
+                    </label>
+
+                    <a href="#" class="forgot">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- Login Button -->
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <!-- Divider -->
+
+            <div class="divider">
+                OR
+            </div>
+
+
+            <!-- Register -->
+
+            <div class="register-text">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create an account
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026
+            <span>LexMatch AI</span>.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // Show / Hide Password
+
+        const togglePassword =
+            document.getElementById("togglePassword");
+
+        const password =
+            document.getElementById("password");
+
+        togglePassword.addEventListener("click", function () {
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+                togglePassword.textContent = "🙈";
+
+                togglePassword.title = "Hide password";
+
+            } else {
+
+                password.type = "password";
+
+                togglePassword.textContent = "👁️";
+
+                togglePassword.title = "Show password";
+            }
+
+        });
+
+
+        // Login Form
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+        loginForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const passwordValue =
+                document.getElementById("password").value.trim();
+
+
+            if (email === "" || passwordValue === "") {
+
+                errorMessage.style.display = "block";
+
+                return;
+            }
+
+
+            errorMessage.style.display = "none";
+
+
+            /*
+             * This is only frontend validation.
+             *
+             * Connect this form to your backend/API here
+             * for real user authentication.
+             */
+
+            alert("Login form submitted successfully!");
+
+        });
+
+    </script>
+
+<script src="app.js"></script>
+</body>
+</html>

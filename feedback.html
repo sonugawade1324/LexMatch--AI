@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Feedback | LexMatch AI</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial}
+body{background:#f1f5f9;color:#1e293b}
+header{background:#0f172a;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:27px;font-weight:bold;color:white}.logo span{color:#38bdf8}
+nav ul{display:flex;list-style:none;gap:20px}nav a{color:white;text-decoration:none}
+.container{max-width:650px;margin:60px auto;padding:0 20px}
+.card{background:white;padding:40px;border-radius:15px;box-shadow:0 10px 30px #0001}
+h1{text-align:center;color:#0f172a}h1 span{color:#0284c7}
+.subtitle{text-align:center;color:#64748b;margin:10px 0 30px}
+.group{margin-bottom:20px}label{display:block;font-weight:bold;margin-bottom:7px}
+input,textarea,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:7px}
+textarea{height:130px;resize:vertical}
+.rating{display:flex;gap:10px;font-size:30px;cursor:pointer}
+.star{color:#cbd5e1}.star.selected{color:#f59e0b}
+button{width:100%;padding:13px;border:0;border-radius:7px;background:#0284c7;color:white;font-size:16px;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Lex<span>Match AI</span></div>
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="chatbot.html">AI Chatbot</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Share Your <span>Feedback</span></h1>
+<p class="subtitle">Help us improve the LexMatch AI experience.</p>
+
+<form id="feedbackForm">
+
+<div class="group">
+<label>Your Name</label>
+<input type="text" placeholder="Enter your name" required>
+</div>
+
+<div class="group">
+<label>Email</label>
+<input type="email" placeholder="Enter your email">
+</div>
+
+<div class="group">
+<label>How would you rate LexMatch AI?</label>
+
+<div class="rating">
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+</div>
+
+<div class="group">
+<label>Feedback Type</label>
+<select required>
+<option value="">Select type</option>
+<option>General Feedback</option>
+<option>Bug Report</option>
+<option>Feature Request</option>
+<option>Chatbot Feedback</option>
+</select>
+</div>
+
+<div class="group">
+<label>Your Feedback</label>
+<textarea placeholder="Tell us what you think..." required></textarea>
+</div>
+
+<button type="submit">Submit Feedback</button>
+
+</form>
+
+</div>
+</div>
+
+<script>
+const stars=document.querySelectorAll(".star");
+
+stars.forEach((star,index)=>{
+star.addEventListener("click",()=>{
+stars.forEach((s,i)=>{
+s.classList.toggle("selected",i<=index);
+});
+});
+});
+
+document.getElementById("feedbackForm").addEventListener("submit",function(e){
+e.preventDefault();
+alert("Thank you for your feedback!");
+});
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>

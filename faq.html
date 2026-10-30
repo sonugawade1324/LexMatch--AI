@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FAQ | LexMatch AI</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial}
+body{background:#f8fafc;color:#1e293b}
+header{background:#0f172a;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:27px;font-weight:bold;color:white}.logo span{color:#38bdf8}
+nav ul{display:flex;list-style:none;gap:20px}nav a{color:white;text-decoration:none}
+.hero{text-align:center;background:#0f172a;color:white;padding:70px 20px}
+.hero h1{font-size:42px}.hero span{color:#38bdf8}
+.faq{max-width:900px;margin:auto;padding:60px 20px}
+.item{background:white;margin-bottom:15px;border-radius:9px;border:1px solid #e2e8f0;overflow:hidden}
+.question{width:100%;padding:20px;text-align:left;border:0;background:white;font-size:16px;font-weight:bold;color:#0f172a;cursor:pointer}
+.answer{display:none;padding:0 20px 20px;color:#64748b;font-size:14px}
+.question.active{color:#0284c7}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Lex<span>Match AI</span></div>
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="legal_topics.html">Legal Topics</a></li>
+<li><a href="chatbot.html">AI Chatbot</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Frequently Asked <span>Questions</span></h1>
+<p>Find answers to common questions about LexMatch AI.</p>
+</section>
+
+<section class="faq">
+
+<div class="item">
+<button class="question">What is LexMatch AI?</button>
+<div class="answer">LexMatch AI is a legal technology platform designed to help users explore general legal information through AI-powered tools.</div>
+</div>
+
+<div class="item">
+<button class="question">Is LexMatch AI a law firm?</button>
+<div class="answer">No. LexMatch AI is an information and technology platform and does not replace a qualified lawyer.</div>
+</div>
+
+<div class="item">
+<button class="question">Can I ask legal questions?</button>
+<div class="answer">Yes. You can use the AI chatbot to explore general legal questions and concepts.</div>
+</div>
+
+<div class="item">
+<button class="question">Is the information legal advice?</button>
+<div class="answer">No. Information provided through LexMatch AI is intended for general educational and informational purposes.</div>
+</div>
+
+<div class="item">
+<button class="question">How do I create an account?</button>
+<div class="answer">Click Register and complete the registration form to create an account.</div>
+</div>
+
+<div class="item">
+<button class="question">How can I contact LexMatch AI?</button>
+<div class="answer">Use the Contact page to send a message to the LexMatch AI support team.</div>
+</div>
+
+</section>
+
+<script>
+document.querySelectorAll(".question").forEach(button=>{
+button.addEventListener("click",()=>{
+const answer=button.nextElementSibling;
+const active=button.classList.contains("active");
+
+document.querySelectorAll(".answer").forEach(a=>a.style.display="none");
+document.querySelectorAll(".question").forEach(q=>q.classList.remove("active"));
+
+if(!active){
+answer.style.display="block";
+button.classList.add("active");
+}
+});
+});
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>

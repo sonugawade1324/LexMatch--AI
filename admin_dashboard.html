@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin Dashboard | LexMatch AI</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial}
+body{background:#f1f5f9;color:#1e293b}
+header{background:#0f172a;color:white;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:27px;font-weight:bold}.logo span{color:#38bdf8}
+nav ul{display:flex;gap:20px;list-style:none}nav a{color:white;text-decoration:none}
+.container{max-width:1250px;margin:35px auto;padding:20px}
+.title{margin-bottom:25px}.title h1{color:#0f172a}.title p{color:#64748b}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat{background:white;padding:25px;border-radius:12px;box-shadow:0 5px 20px #0001}
+.stat .icon{font-size:28px}.stat h2{font-size:30px;color:#0284c7;margin:7px 0}
+.content{display:grid;grid-template-columns:2fr 1fr;gap:25px;margin-top:25px}
+.card{background:white;border-radius:12px;padding:25px;box-shadow:0 5px 20px #0001}
+.card h2{margin-bottom:20px}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:13px;border-bottom:1px solid #e2e8f0;font-size:14px}
+th{color:#0284c7}
+.status{background:#dcfce7;color:#15803d;padding:5px 9px;border-radius:15px;font-size:12px}
+.action{display:block;text-decoration:none;color:white;background:#0284c7;padding:12px;border-radius:7px;margin-bottom:12px;text-align:center}
+.action:hover{background:#0369a1}
+@media(max-width:900px){header{flex-direction:column;gap:15px}.stats{grid-template-columns:1fr 1fr}.content{grid-template-columns:1fr}}
+@media(max-width:500px){.stats{grid-template-columns:1fr}.card{overflow-x:auto}}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Lex<span>Match AI</span>
+</div>
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="user_dashboard.html">User View</a></li>
+<li><a href="profile.html">Profile</a></li>
+<li><a href="login.html">Logout</a></li>
+</ul>
+</nav>
+
+</header>
+
+<main class="container">
+
+<div class="title">
+<h1>Admin Dashboard</h1>
+<p>Manage and monitor the LexMatch AI platform.</p>
+</div>
+
+<section class="stats">
+
+<div class="stat">
+<div class="icon">👥</div>
+<h2>1,248</h2>
+<p>Total Users</p>
+</div>
+
+<div class="stat">
+<div class="icon">🤖</div>
+<h2>8,542</h2>
+<p>AI Questions</p>
+</div>
+
+<div class="stat">
+<div class="icon">⚖️</div>
+<h2>24</h2>
+<p>Legal Topics</p>
+</div>
+
+<div class="stat">
+<div class="icon">⭐</div>
+<h2>386</h2>
+<p>Feedback</p>
+</div>
+
+</section>
+
+<div class="content">
+
+<div class="card">
+
+<h2>Recent Users</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Type</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Alex User</td>
+<td>alex@example.com</td>
+<td>User</td>
+<td><span class="status">Active</span></td>
+</tr>
+
+<tr>
+<td>Priya Sharma</td>
+<td>priya@example.com</td>
+<td>User</td>
+<td><span class="status">Active</span></td>
+</tr>
+
+<tr>
+<td>Rahul Patil</td>
+<td>rahul@example.com</td>
+<td>Professional</td>
+<td><span class="status">Active</span></td>
+</tr>
+
+<tr>
+<td>Admin User</td>
+<td>admin@example.com</td>
+<td>Admin</td>
+<td><span class="status">Active</span></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>Admin Actions</h2>
+
+<a href="#" class="action">👥 Manage Users</a>
+<a href="legal_topics.html" class="action">⚖️ Manage Topics</a>
+<a href="feedback.html" class="action">⭐ View Feedback</a>
+<a href="contact.html" class="action">📩 Messages</a>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

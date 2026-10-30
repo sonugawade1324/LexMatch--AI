@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chatbot | LexMatch AI</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial}
+body{background:#f1f5f9;color:#1e293b}
+header{background:#0f172a;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:27px;font-weight:bold;color:white}.logo span{color:#38bdf8}
+nav ul{display:flex;list-style:none;gap:20px}
+nav a{color:white;text-decoration:none}nav a:hover{color:#38bdf8}
+
+.chat-section{height:calc(100vh - 75px);padding:30px 7%;background:#e2e8f0}
+.chat-container{max-width:900px;height:100%;margin:auto;background:white;border-radius:15px;overflow:hidden;box-shadow:0 10px 30px #0002;display:flex;flex-direction:column}
+.chat-header{background:#0f172a;color:white;padding:20px}
+.chat-header h2{color:#38bdf8}
+.chat-header p{font-size:13px;color:#cbd5e1}
+.messages{flex:1;padding:25px;overflow-y:auto;background:#f8fafc}
+.message{max-width:75%;padding:12px 16px;border-radius:12px;margin-bottom:15px;font-size:14px}
+.bot{background:#e0f2fe;color:#0f172a}
+.user{background:#0284c7;color:white;margin-left:auto}
+.chat-input{display:flex;padding:15px;border-top:1px solid #e2e8f0;gap:10px}
+.chat-input input{flex:1;padding:13px;border:1px solid #cbd5e1;border-radius:8px;outline:none}
+.chat-input button{padding:13px 22px;border:0;border-radius:8px;background:#0284c7;color:white;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Lex<span>Match AI</span></div>
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="legal_topics.html">Legal Topics</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="profile.html">Profile</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="chat-section">
+<div class="chat-container">
+
+<div class="chat-header">
+<h2>⚖️ LexMatch AI Assistant</h2>
+<p>Ask questions about general legal information.</p>
+</div>
+
+<div class="messages" id="messages">
+<div class="message bot">
+Hello! I'm LexMatch AI. How can I help you explore legal information today?
+</div>
+</div>
+
+<form class="chat-input" id="chatForm">
+<input id="messageInput" type="text" placeholder="Type your legal question..." required>
+<button type="submit">Send</button>
+</form>
+
+</div>
+</section>
+
+<script>
+const form=document.getElementById("chatForm");
+const input=document.getElementById("messageInput");
+const messages=document.getElementById("messages");
+
+form.addEventListener("submit",function(e){
+e.preventDefault();
+
+const text=input.value.trim();
+if(!text)return;
+
+const user=document.createElement("div");
+user.className="message user";
+user.textContent=text;
+messages.appendChild(user);
+
+input.value="";
+messages.scrollTop=messages.scrollHeight;
+
+setTimeout(()=>{
+const bot=document.createElement("div");
+bot.className="message bot";
+bot.textContent="Thank you for your question. LexMatch AI can provide general legal information, but this demo chatbot is not connected to a live AI or legal database yet.";
+messages.appendChild(bot);
+messages.scrollTop=messages.scrollHeight;
+},600);
+});
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>
